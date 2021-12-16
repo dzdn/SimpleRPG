@@ -7,10 +7,32 @@ export var speed = 75
 var last_direction = Vector2(0, 1)
 var attack_playing = false
 
+# Player stats
+var health = 100
+var health_max = 100
+var health_regeneration = 1
+var mana = 100
+var mana_max = 100
+var mana_regeneration = 2
+
+signal player_stats_changed
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	emit_signal("player_stats_changed", self)
 
+func _process(delta):
+	# Regenerates mana
+	var new_mana = min(mana + mana_regeneration * delta, mana_max)
+	if new_mana != mana:
+		mana = new_mana
+		emit_signal("player_stats_changed", self)
+	
+	# Regenerates health
+	var new_health = min(health + health_regeneration * delta, health_max)
+	if new_health != health:
+		health = new_health
+		emit_signal("player_stats_changed", self)
 
 func _physics_process(delta):
 	# Get player input
@@ -66,9 +88,12 @@ func _input(event):
 		var animation = get_animation_direction(last_direction) + "_attack"
 		$Sprite.play(animation)
 	elif event.is_action_pressed("fireball"):
-		attack_playing = true
-		var animation = get_animation_direction(last_direction) + "_fireball"
-		$Sprite.play(animation)
+		if mana >= 25:
+			mana = mana - 25
+			emit_signal("player_stats_changed", self)
+			attack_playing = true
+			var animation = get_animation_direction(last_direction) + "_fireball"
+			$Sprite.play(animation)
 
 
 func _on_Sprite_animation_finished():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Entities/Player/player_down_idle_1.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=2]
@@ -34,6 +34,10 @@
 [ext_resource path="res://Entities/Player/player_up_idle_2.png" type="Texture" id=32]
 [ext_resource path="res://Entities/Player/player_up_attack_2.png" type="Texture" id=33]
 [ext_resource path="res://Entities/Player/player_up_walk_1.png" type="Texture" id=34]
+[ext_resource path="res://GUI/Health.gd" type="Script" id=35]
+[ext_resource path="res://GUI/Mana.gd" type="Script" id=36]
+[ext_resource path="res://Fonts/FontTheme.tres" type="Theme" id=37]
+[ext_resource path="res://GUI/potions.png" type="Texture" id=38]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -41,6 +45,26 @@ animations = [ {
 "loop": true,
 "name": "right_walk",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 26 ), ExtResource( 18 ) ],
+"loop": false,
+"name": "right_attack",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 33 ) ],
+"loop": false,
+"name": "up_attack",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 9 ), ExtResource( 1 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "down_walk",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "right_idle",
+"speed": 1.0
 }, {
 "frames": [ ExtResource( 22 ), ExtResource( 32 ) ],
 "loop": true,
@@ -52,59 +76,9 @@ animations = [ {
 "name": "left_walk",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 16 ), ExtResource( 26 ), ExtResource( 18 ) ],
-"loop": false,
-"name": "right_attack",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 14 ) ],
-"loop": false,
-"name": "left_fireball",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 28 ) ],
-"loop": true,
-"name": "left_idle",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 15 ), ExtResource( 20 ) ],
-"loop": false,
-"name": "left_attack",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 1 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "down_idle",
-"speed": 1.0
-}, {
 "frames": [ ExtResource( 22 ), ExtResource( 34 ), ExtResource( 22 ), ExtResource( 30 ) ],
 "loop": true,
 "name": "up_walk",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 22 ), ExtResource( 31 ), ExtResource( 29 ) ],
-"loop": false,
-"name": "up_fireball",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 33 ) ],
-"loop": false,
-"name": "up_attack",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
-"loop": true,
-"name": "right_idle",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 1 ), ExtResource( 5 ), ExtResource( 6 ) ],
-"loop": false,
-"name": "down_attack",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 1 ), ExtResource( 9 ), ExtResource( 1 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "down_walk",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 1 ), ExtResource( 7 ), ExtResource( 8 ) ],
@@ -115,6 +89,36 @@ animations = [ {
 "frames": [ ExtResource( 16 ), ExtResource( 24 ), ExtResource( 27 ) ],
 "loop": false,
 "name": "right_fireball",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 14 ) ],
+"loop": false,
+"name": "left_fireball",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "down_idle",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 15 ), ExtResource( 20 ) ],
+"loop": false,
+"name": "left_attack",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "left_idle",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 31 ), ExtResource( 29 ) ],
+"loop": false,
+"name": "up_fireball",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": false,
+"name": "down_attack",
 "speed": 7.0
 } ]
 
@@ -155,4 +159,139 @@ cell_size = Vector2( 8, 8 )
 format = 1
 tile_data = PoolIntArray( 458815, 4, 0, 589874, 4, 0, 655422, 4, 0, 720959, 4, 0, 720960, 4, 0, 786438, 4, 0, 983097, 4, 0, 1114157, 4, 0, 1114170, 4, 0, 1245206, 4, 0, 1310736, 4, 0, 1376273, 4, 0, 1507340, 4, 0, 2883620, 4, 0, 2883655, 4, 0, 2949200, 4, 0, 3014691, 4, 0, 3014698, 4, 0, 3014732, 4, 0, 3014735, 4, 0, 3014737, 4, 0, 3080233, 4, 0, 3080240, 4, 0, 3080269, 4, 0, 3080278, 4, 0, 3145808, 4, 0, 3145810, 4, 0, 3211340, 4, 0, 3211342, 4, 0, 3342365, 4, 0, 3473493, 4, 0, 3538960, 4, 0, 3670031, 4, 0, 5636187, 4, 0, 5767258, 4, 0, 5767261, 4, 0, 5898330, 4, 0, 5898331, 4, 0, 5963867, 4, 0 )
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Health" type="ColorRect" parent="CanvasLayer"]
+margin_left = 3.0
+margin_top = 158.0
+margin_right = 77.0
+margin_bottom = 167.0
+color = Color( 0, 0, 0, 0.627451 )
+script = ExtResource( 35 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bar" type="ColorRect" parent="CanvasLayer/Health"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 73.0
+margin_bottom = 8.0
+color = Color( 1, 0.196078, 0.196078, 1 )
+
+[node name="Mana" type="ColorRect" parent="CanvasLayer"]
+margin_left = 3.0
+margin_top = 169.0
+margin_right = 77.0
+margin_bottom = 178.0
+color = Color( 0, 0, 0, 0.627451 )
+script = ExtResource( 36 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bar" type="ColorRect" parent="CanvasLayer/Mana"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 73.0
+margin_bottom = 8.0
+color = Color( 0.129412, 0.501961, 1, 1 )
+
+[node name="XP" type="ColorRect" parent="CanvasLayer"]
+margin_left = 124.0
+margin_top = 158.0
+margin_right = 196.0
+margin_bottom = 178.0
+color = Color( 0, 0, 0, 0.627451 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelXP" type="Label" parent="CanvasLayer/XP"]
+margin_left = 2.0
+margin_top = 1.0
+margin_right = 22.0
+margin_bottom = 15.0
+theme = ExtResource( 37 )
+text = "XP:"
+
+[node name="LabelLevel" type="Label" parent="CanvasLayer/XP"]
+margin_left = 2.0
+margin_top = 10.0
+margin_right = 28.0
+margin_bottom = 24.0
+theme = ExtResource( 37 )
+text = "LVL:"
+
+[node name="ValueXP" type="Label" parent="CanvasLayer/XP"]
+margin_left = 21.0
+margin_top = 1.0
+margin_right = 71.0
+margin_bottom = 11.0
+theme = ExtResource( 37 )
+text = "0/100	"
+align = 2
+
+[node name="ValueLevel" type="Label" parent="CanvasLayer/XP"]
+margin_left = 21.0
+margin_top = 10.0
+margin_right = 71.0
+margin_bottom = 20.0
+theme = ExtResource( 37 )
+text = "1"
+align = 2
+
+[node name="HealthPotions" type="ColorRect" parent="CanvasLayer"]
+margin_left = 243.0
+margin_top = 158.0
+margin_right = 279.0
+margin_bottom = 178.0
+color = Color( 0, 0, 0, 0.627451 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/HealthPotions"]
+position = Vector2( 10, 10 )
+texture = ExtResource( 38 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 16 )
+
+[node name="Label" type="Label" parent="CanvasLayer/HealthPotions"]
+margin_left = 19.0
+margin_top = 6.0
+margin_right = 33.0
+margin_bottom = 16.0
+theme = ExtResource( 37 )
+text = "0"
+align = 2
+
+[node name="ManaPotions" type="ColorRect" parent="CanvasLayer"]
+margin_left = 281.0
+margin_top = 158.0
+margin_right = 317.0
+margin_bottom = 178.0
+color = Color( 0, 0, 0, 0.627451 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/ManaPotions"]
+position = Vector2( 10, 10 )
+texture = ExtResource( 38 )
+region_enabled = true
+region_rect = Rect2( 16, 0, 16, 16 )
+
+[node name="Label" type="Label" parent="CanvasLayer/ManaPotions"]
+margin_left = 19.0
+margin_top = 6.0
+margin_right = 33.0
+margin_bottom = 16.0
+theme = ExtResource( 37 )
+text = "0"
+align = 2
+
+[connection signal="player_stats_changed" from="Player" to="Player" method="_on_Player_player_stats_changed"]
+[connection signal="player_stats_changed" from="Player" to="CanvasLayer/Health" method="_on_Player_player_stats_changed"]
+[connection signal="player_stats_changed" from="Player" to="CanvasLayer/Mana" method="_on_Player_player_stats_changed"]
 [connection signal="animation_finished" from="Player/Sprite" to="Player" method="_on_Sprite_animation_finished"]
