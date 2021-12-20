@@ -1,10 +1,26 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Fonts/Skeleton.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Entities/Skeleton/Skeleton.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 7 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Skeleton" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -20,5 +36,13 @@ shape = SubResource( 1 )
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Hit = SubResource( 2 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 16 )
+
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
